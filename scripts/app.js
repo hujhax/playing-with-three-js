@@ -1,7 +1,7 @@
 var example = (function() {
     "use strict"; 
     var scene = new THREE.Scene();
-    var renderer = new THREE.WebGLRenderer();
+    var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
     var light = new THREE.AmbientLight(0xffffff);
     var camera;
     var box;
