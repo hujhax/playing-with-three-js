@@ -25,5 +25,15 @@ var example = (function() {
         box.name="box";
 
         scene.add(box);
+
+        render();
     }
+
+    function render() {
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+    }
+
+    window.onload = initScene;
+
 }());
