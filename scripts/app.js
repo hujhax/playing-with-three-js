@@ -36,4 +36,8 @@ var example = (function() {
 
     window.onload = initScene;
 
+    return {
+        scene: scene // for ease of debugging, it's good to have access.
+    };
+
 }());
