@@ -17,6 +17,11 @@ var example = (function() {
         camera.position.z = 5;
         scene.add(camera);
 
+        var triangleMaterial = new THREE.MeshBasicMaterial({
+            vertexColors: THREE.VertexColors,
+            side: THREE.DoubleSide
+        });
+
         var triangleGeometry = new THREE.Geometry();
 
         triangleGeometry.vertices.push(new THREE.Vector3( 0.0, 1.0, 0.0 ));
@@ -25,7 +30,11 @@ var example = (function() {
 
         triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
 
-        var testTriangle = new THREE.Mesh(triangleGeometry);
+        triangleGeometry.faces[0].vertexColors[0] = new THREE.Color(0xFF0000);
+        triangleGeometry.faces[0].vertexColors[1] = new THREE.Color(0x00FF00);
+        triangleGeometry.faces[0].vertexColors[2] = new THREE.Color(0X0000FF);
+
+        var testTriangle = new THREE.Mesh(triangleGeometry, triangleMaterial);
 
         scene.add(testTriangle);
 
