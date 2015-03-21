@@ -14,17 +14,20 @@ var example = (function() {
 
         camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 1, 1000);
 
-        camera.position.z = 100;
+        camera.position.z = 5;
         scene.add(camera);
 
-        box = new THREE.Mesh(
-            new THREE.BoxGeometry(20,20,20),
-            new THREE.MeshBasicMaterial({color: 0xFF0000})
-        );
+        var triangleGeometry = new THREE.Geometry();
 
-        box.name="box";
+        triangleGeometry.vertices.push(new THREE.Vector3( 0.0, 1.0, 0.0 ));
+        triangleGeometry.vertices.push(new THREE.Vector3( -1.0, 1.0, 0.0 ));
+        triangleGeometry.vertices.push(new THREE.Vector3( 1.0, -1.0, 0.0 ));
 
-        scene.add(box);
+        triangleGeometry.faces.push(new THREE.Face3(0, 1, 2));
+
+        var testTriangle = new THREE.Mesh(triangleGeometry);
+
+        scene.add(testTriangle);
 
         render();
     }
