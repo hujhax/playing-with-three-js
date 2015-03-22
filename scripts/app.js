@@ -4,8 +4,9 @@ var example = (function() {
     var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
     var light = new THREE.SpotLight(0xffffff, 1, 150, 0.2);
     light.position.set(0,0,90);
-    var sidelight = new THREE.SpotLight(0xffffff, 1, 150, 0.2);
-    sidelight.position.set(0,90,0);
+    var sideLight = new THREE.SpotLight(0xffffff, 1, 150, 0.2);
+    sideLight.position.set(0,90,0);
+    var ambientLight = new THREE.AmbientLight(0xaaaa44);
     var camera;
     var box;
 
@@ -14,7 +15,8 @@ var example = (function() {
         document.getElementById("wegl-container").appendChild(renderer.domElement);
 
         scene.add(light);
-        scene.add(sidelight);
+        scene.add(sideLight);
+        scene.add(ambientLight);
 
         camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 1, 1000);
 
