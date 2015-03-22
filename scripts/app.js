@@ -23,7 +23,9 @@ var example = (function() {
 
         box = new THREE.Mesh(
             new THREE.BoxGeometry(20,20,20),
-            new THREE.MeshPhongMaterial({color: 0x0033FF, ambient: 0x00FF00, specular: 0x444444, shininess: 30})
+            new THREE.MeshLambertMaterial({
+                map: THREE.ImageUtils.loadTexture('content/wood.jpg')
+            })
         );
 
         box.name="box";
