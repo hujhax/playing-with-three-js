@@ -25,8 +25,12 @@ var example = (function() {
 
         box = new THREE.Mesh(
             new THREE.BoxGeometry(20,20,20),
-            new THREE.MeshLambertMaterial({
-                map: THREE.ImageUtils.loadTexture('content/wood.jpg')
+            new THREE.MeshPhongMaterial({
+                map: THREE.ImageUtils.loadTexture('content/lattice.png'),
+                specular: 0xdddddd,
+                shininess: 10,
+                transparent: true,
+                side: THREE.DoubleSide
             })
         );
 
