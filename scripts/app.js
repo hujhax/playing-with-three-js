@@ -49,7 +49,31 @@ var example = (function() {
         requestAnimationFrame(render);
     }
 
+    function checkKey(e) {
+        var left = 37;
+        var up = 38;
+        var right = 39;
+        var down = 40;
+        var increment = 1;
+
+        e = e || window.event;
+
+        if (e.keyCode === up) {
+            camera.position.z -= increment;
+        }
+        else if (e.keyCode === down) {
+            camera.position.z += increment;
+        }
+        else if (e.keyCode === left) {
+            camera.position.x -= increment;
+        }
+        else if (e.keyCode === right) {
+            camera.position.x += increment;
+        }
+    }
+
     window.onload = initScene;
+    window.onkeydown = checkKey;
 
     return {
         scene: scene // for ease of debugging, it's good to have access.
