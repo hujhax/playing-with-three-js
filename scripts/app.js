@@ -10,6 +10,7 @@ var example = (function() {
     var camera;
     var box;
     var controls;
+    var clock = new THREE.Clock();
 
     function initScene() {
         renderer.setSize (window.innerWidth, window.innerHeight );
@@ -39,13 +40,18 @@ var example = (function() {
 
         scene.add(box);
 
-        controls = new THREE.OrbitControls(camera);
-        controls.addEventListener('change', render);
+        controls = new THREE.FlyControls(camera);
+        controls.movementSpeed = 100;
+        controls.domElement = document.getElementById("webgl-container");
+        controls.rollSpeed = Math.PI / 24;
 
         render();
     }
 
     function render() {
+        var delta = clock.getDelta();
+        controls.update(delta);
+
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
