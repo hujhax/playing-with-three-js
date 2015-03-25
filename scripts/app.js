@@ -29,11 +29,12 @@ var example = (function() {
             0.8 // bounciness
         );
 
-        var box = new Physijs.BoxMesh(
+        box = new Physijs.BoxMesh(
             new THREE.CubeGeometry(15,15,15),
             boxMaterial
         );
 
+        box.name = 'box';
         box.position.y = 90;
         box.rotation.z = 90;
         box.rotation.y = 50;
