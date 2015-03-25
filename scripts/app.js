@@ -49,14 +49,39 @@ var example = (function() {
     }
 
     function render() {
-        var delta = clock.getDelta();
-        controls.update(delta);
+        // var delta = clock.getDelta();
+        // controls.update(delta);
 
         renderer.render(scene, camera);
         requestAnimationFrame(render);
     }
 
+    function onDocumentMouseDown(event) {
+        if (event===undefined) event= window.event;
+
+        var projector = new THREE.Projector();
+
+        var mouseClickVector = new THREE.Vector3(
+            (event.clientX / window.innerWidth) * 2 - 1,
+            (event.clientY / window.innerHeight) * 2 + 1,
+            0.5);
+
+        mouseClickVector.unproject(camera);
+
+        var raycaster = new THREE.Raycaster(camera.position, 
+            mouseClickVector.sub(camera.position).normalize());
+
+        var intersects = raycaster.intersectObjects([box]);
+
+        if (intersects.length > 0) {
+            intersects[0].object.material.specular.setHex(Math.random() * 0xffffff);
+            alert("clicked!");
+        }
+    }
+
     window.onload = initScene;
+
+    document.onclick= onDocumentMouseDown;
 
     return {
         scene: scene // for ease of debugging, it's good to have access.
