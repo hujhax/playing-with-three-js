@@ -1,5 +1,9 @@
 var example = (function() {
     "use strict"; 
+
+    Physijs.scripts.worker = 'scripts/physijs_worker.js';
+    Physijs.scripts.ammo = 'ammo.js';
+
     var scene = new THREE.Scene();
     var renderer = window.WebGLRenderingContext ? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
     var light = new THREE.AmbientLight(0xffffff);
