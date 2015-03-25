@@ -13,7 +13,7 @@ var example = (function() {
 
     function initScene() {
         renderer.setSize (window.innerWidth, window.innerHeight );
-        document.getElementById("wegl-container").appendChild(renderer.domElement);
+        document.getElementById("webgl-container").appendChild(renderer.domElement);
 
         scene.add(light);
         scene.add(sideLight);
