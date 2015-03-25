@@ -41,6 +41,15 @@ var example = (function() {
 
         scene.add(box);
 
+        box.addEventListener('collision', function(
+            otherObject,
+            relativeVelocity,
+            relativeRotation,
+            contactNormal) {
+                if (otherObject.name === 'ground') {
+                    alert("Boom!  It hit the ground!");
+                }
+        });
         var groundMaterial = Physijs.createMaterial(
             new THREE.MeshBasicMaterial({color: 0x008888}),
             0, // friction
