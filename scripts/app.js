@@ -9,6 +9,7 @@ var example = (function() {
     var ambientLight = new THREE.AmbientLight(0xaaaa44);
     var camera;
     var box;
+    var controls;
 
     function initScene() {
         renderer.setSize (window.innerWidth, window.innerHeight );
@@ -37,6 +38,9 @@ var example = (function() {
         box.name="box";
 
         scene.add(box);
+
+        controls = new THREE.OrbitControls(camera);
+        controls.addEventListener('change', render);
 
         render();
     }
