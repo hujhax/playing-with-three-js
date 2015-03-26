@@ -7,9 +7,9 @@ var example = (function() {
     var scene = new Physijs.Scene();
     var renderer = new THREE.WebGLRenderer();
     var light = new THREE.SpotLight(0xffffff, 1, 750, 0.8);
-    light.position.set(80,200,200);
+    light.position.set(20,50,100);
     var sidelight = new THREE.SpotLight(0xffffff, 1, 750, 0.8);
-    sidelight.position.set(180,120,50);
+    sidelight.position.set(-200,250,-100);
 
     var camera;
     var box, ground;
@@ -71,6 +71,15 @@ var example = (function() {
         ground.name = 'ground';
         ground.position.y = 25;
         scene.add(ground);
+
+        // enable shadows
+        renderer.shadowMapEnabled = true;
+        light.castShadow = true;
+        light.shadowDarkness = 0.5;
+        sidelight.castShadow = true;
+        sidelight.shadowDarkness = 0.5;
+        box.castShadow = true;
+        ground.receiveShadow = true;
 
         render();
     }
