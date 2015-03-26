@@ -112,7 +112,10 @@ var example = (function() {
     window.onkeydown = checkKey;
 
     return {
-        scene: scene // for ease of debugging, it's good to have access.
+        scene: scene, // for ease of debugging, it's good to have access.
+        light: light,
+        sidelight: sidelight,
+        renderer: renderer
     };
 
 }());
