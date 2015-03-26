@@ -81,7 +81,22 @@ var example = (function() {
         requestAnimationFrame(render);
     }
 
+    function checkKey(e) {
+        var up = 38;
+
+        e = e || window.event;
+
+        if (e.keyCode === up) {
+            box.position.y = 90;
+            box.rotation.z = Math.random()*2+1;
+            box.__dirtyPosition = true;
+            box.__dirtyRotation = true;
+        }
+    }
+
+
     window.onload = initScene;
+    window.onkeydown = checkKey;
 
     return {
         scene: scene // for ease of debugging, it's good to have access.
