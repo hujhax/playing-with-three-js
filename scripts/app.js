@@ -53,7 +53,7 @@ var example = (function() {
             relativeRotation,
             contactNormal) {
                 if (otherObject.name === 'ground') {
-                    alert("Boom!  It hit the ground!");
+                    box.material.color.setHex(Math.floor(Math.random()*16777215))
                 }
         });
         var groundMaterial = Physijs.createMaterial(
