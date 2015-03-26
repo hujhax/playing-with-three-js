@@ -6,7 +6,11 @@ var example = (function() {
 
     var scene = new Physijs.Scene();
     var renderer = new THREE.WebGLRenderer();
-    var light = new THREE.AmbientLight(0xffffff);
+    var light = new THREE.SpotLight(0xffffff, 1, 750, 0.8);
+    light.position.set(80,200,200);
+    var sidelight = new THREE.SpotLight(0xffffff, 1, 750, 0.8);
+    sidelight.position.set(180,120,50);
+
     var camera;
     var box, ground;
 
@@ -17,14 +21,16 @@ var example = (function() {
         document.getElementById("wegl-container").appendChild(renderer.domElement);
 
         scene.add(light);
+        scene.add(sidelight);
 
         camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 1, 1000);
         camera.position.set(80,200,200);
         camera.lookAt(scene.position);
         scene.add(camera);
+            
 
         var boxMaterial = Physijs.createMaterial(
-            new THREE.MeshBasicMaterial({color: 0xFF0000}),
+            new THREE.MeshPhongMaterial({color: 0x0033FF, ambient: 0x00FF00, specular: 0x444444, shininess: 30}),
             0, // friction
             0.8 // bounciness
         );
@@ -51,7 +57,7 @@ var example = (function() {
                 }
         });
         var groundMaterial = Physijs.createMaterial(
-            new THREE.MeshBasicMaterial({color: 0x008888}),
+            new THREE.MeshPhongMaterial({color: 0x008888, ambient: 0x00FF00, specular: 0x444444, shininess: 30}),
             0, // friction
             0 // bounciness
         );
